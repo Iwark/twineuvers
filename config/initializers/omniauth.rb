@@ -2,5 +2,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   begin
     setting = Setting.first
     provider :twitter, setting.twitter_consumer_key, setting.twitter_consumer_secret
+  rescue => e
+    puts e
   end
 end

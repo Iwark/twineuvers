@@ -1,20 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+  charset: utf8
+  collation: utf8_general_ci
+  username: root
 
-  default: &default
-    adapter: mysql2
-    encoding: utf8
-    pool: 5
-    timeout: 5000
-    charset: utf8
-    collation: utf8_general_ci
-    username: root
+development:
+  <<: *default
+  database: twineuvers_development
 
-  development:
-    <<: *default
-    database: crutter_development
+test:
+  <<: *default
+  database: twineuvers_test
 
-  test:
-    <<: *default
-    database: crutter_test
-
-  production:
-    database: crutter_production
+production:
+  database: twineuvers_production

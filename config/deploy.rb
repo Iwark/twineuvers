@@ -1,9 +1,9 @@
-set :application, :crutter
-set :repo_url, 'git@github.com:Iwark/crutter.git'
+set :application, :twineuvers
+set :repo_url, 'git@github.com:Iwark/twineuvers.git'
 
 set :scm, :git
 
-set :rbenv_ruby, '2.2.1'
+set :rbenv_ruby, '2.2.3'
 
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml config/secrets.yml}

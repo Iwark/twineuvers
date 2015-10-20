@@ -1,0 +1,14 @@
+= simple_form_for(@account) do |f|
+
+  .form-inputs
+    = f.input :group_id, collection: Group.all
+    = f.input :target_id, collection: Target.all
+    = f.input :description
+    = f.input :auto_update
+    = f.input :auto_follow
+    = f.input :auto_unfollow
+    = f.input :auto_direct_message
+    = f.input :auto_retweet
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'

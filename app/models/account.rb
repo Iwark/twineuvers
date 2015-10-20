@@ -101,7 +101,7 @@ class Account < ActiveRecord::Base
   #
   # @param [Fixnum] n フォローを試みる回数
   # @return [nil]
-  def follow_users(n=12)
+  def follow_users(n=11)
 
     # 一時的にキャッシュクリア
     Rails.cache.clear

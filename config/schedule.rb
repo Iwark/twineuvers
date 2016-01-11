@@ -24,13 +24,17 @@ env :PATH, ENV['PATH']
 set :output, {standard: 'log/cron_standard.log', error: 'log/cron_error.log'}
 set :environment, :production
 
+every 13.minutes do
+  rake "account:send_direct_messages_all"
+end
+
 every 15.minutes do
   rake "account:follow_all"
   rake "account:unfollow_all"
 end
 
-every 13.minutes do
-  rake "account:send_direct_messages_all"
+every 30.minutes do
+  rake "twitter:update_profile"
 end
 
 every 47.minutes do

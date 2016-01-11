@@ -53,6 +53,9 @@ gem 'chartkick'
 # BULK INSERT
 gem "activerecord-import"
 
+gem 'google-api-client'
+gem 'google_drive'
+
 group :development do
   gem 'html2slim'
   # N+1問題の検出

@@ -85,12 +85,6 @@ ActiveRecord::Schema.define(version: 20150816052916) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "power_histories", force: :cascade do |t|
-    t.integer  "followers_sum", limit: 4, null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
   create_table "sent_messages", force: :cascade do |t|
     t.integer  "account_id",        limit: 4
     t.integer  "direct_message_id", limit: 4

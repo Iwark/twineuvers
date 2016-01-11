@@ -5,7 +5,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -80,6 +81,7 @@ pickle-email-*.html
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
 
 config/secrets.yml
+config/google_token.json
 
 ## Environment normalisation:
 /.bundle

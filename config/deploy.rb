@@ -6,7 +6,7 @@ set :scm, :git
 set :rbenv_ruby, '2.2.3'
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml config/google_token.json}
 
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets public/uploads}
 

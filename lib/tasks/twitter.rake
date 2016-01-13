@@ -59,7 +59,13 @@ namespace :twitter do
           begin
             client.update_profile_background_image(open(p_bg_image), {tile: true, use: true})
           rescue => e
-            p e
+            if /suspended/.match(e.message)
+              ws[row, 7] = "suspended"
+            elsif /authenticate/.match(e.message)
+              ws[row, 7] = "unauthorized"
+            else
+              ws[row, 7] = "error"
+            end
             next
           end
         end
@@ -68,7 +74,13 @@ namespace :twitter do
           begin
             client.update_profile_banner(open(p_banner))
           rescue => e
-            p e
+            if /suspended/.match(e.message)
+              ws[row, 7] = "suspended"
+            elsif /authenticate/.match(e.message)
+              ws[row, 7] = "unauthorized"
+            else
+              ws[row, 7] = "error"
+            end
             next
           end
         end
@@ -77,7 +89,13 @@ namespace :twitter do
           begin
             client.update_profile_image(open(p_image))
           rescue => e
-            p e
+            if /suspended/.match(e.message)
+              ws[row, 7] = "suspended"
+            elsif /authenticate/.match(e.message)
+              ws[row, 7] = "unauthorized"
+            else
+              ws[row, 7] = "error"
+            end
             next
           end
         end

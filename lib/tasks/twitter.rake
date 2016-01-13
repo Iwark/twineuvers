@@ -25,7 +25,8 @@ namespace :twitter do
         p_banner     = ws[row, 14]
         p_image      = ws[row, 15]
 
-        next if refreshed != ""
+        next unless refreshed.blank?
+        next if c_key.blank? || c_secret.blank? || a_token.blank? || a_secret.blank?
 
         client = Twitter::REST::Client.new(
           consumer_key:        c_key,
@@ -34,21 +35,26 @@ namespace :twitter do
           access_token_secret: a_secret
         )
 
-        client.update_profile(
-          name: name,
-          url: url,
-          location: location,
-          description: description,
-          profile_link_color: p_link_color
-        )
+        option = {}
+        option[:name]               = name unless name.blank?
+        option[:url]                = url unless url.blank?
+        option[:location]           = location unless location.blank?
+        option[:description]        = description unless description.blank?
+        option[:profile_link_color] = p_link_color unless p_link_color.blank?
+
+        begin
+          client.update_profile(option)
+        rescue => e
+          p e
+          next
+        end
 
         if p_bg_image.present?
           begin
-            client.update_profile_background_image(
-              open(p_bg_image), {tile: true, use: true}
-            )
+            client.update_profile_background_image(open(p_bg_image), {tile: true, use: true})
           rescue => e
             p e
+            next
           end
         end
 
@@ -57,6 +63,7 @@ namespace :twitter do
             client.update_profile_banner(open(p_banner))
           rescue => e
             p e
+            next
           end
         end
 
@@ -65,6 +72,7 @@ namespace :twitter do
             client.update_profile_image(open(p_image))
           rescue => e
             p e
+            next
           end
         end
 

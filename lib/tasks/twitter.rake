@@ -45,7 +45,13 @@ namespace :twitter do
         begin
           client.update_profile(option)
         rescue => e
-          p e
+          if /suspended/.match(e.message)
+            ws[row, 7] = "suspended"
+          elsif /authenticate/.match(e.message)
+            ws[row, 7] = "unauthorized"
+          else
+            ws[row, 7] = "error"
+          end
           next
         end
 

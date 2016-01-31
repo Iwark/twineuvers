@@ -1,4 +1,16 @@
 # coding: utf-8
+# == Schema Information
+#
+# Table name: targets
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  screen_name :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :integer
+#
+
 
 class TargetsController < ApplicationController
   before_action :set_target, only: [:show, :edit, :update, :destroy]
@@ -25,6 +37,7 @@ class TargetsController < ApplicationController
   # POST /targets
   def create(target)
     @target = Target.new(target)
+    @target.user = current_user
 
     if @target.save
       redirect_to @target, notice: 'Target was successfully created.'

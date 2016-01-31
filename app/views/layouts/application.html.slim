@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | Crutter
+      | Twineuvers
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = javascript_include_tag "//www.google.com/jsapi", "chartkick"
@@ -23,7 +23,5 @@ html
             = link_to 'DirectMessages', direct_messages_path
           = nav_list(controller.controller_name, "sent_messages") do
             = link_to 'SentMessages', sent_messages_path
-          = nav_list(controller.controller_name, "settings") do
-            = link_to 'Setting', edit_setting_path(1)
     .main-container
       = yield

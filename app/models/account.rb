@@ -5,8 +5,8 @@
 #  id                  :integer          not null, primary key
 #  group_id            :integer          not null
 #  screen_name         :string(255)      not null
-#  oauth_token         :string(255)      not null
-#  oauth_token_secret  :string(255)      not null
+#  access_token        :string(255)      not null
+#  access_secret       :string(255)      not null
 #  friends_count       :integer          default(0)
 #  followers_count     :integer          default(0)
 #  description         :string(255)      default("")
@@ -42,7 +42,6 @@ class Account < ActiveRecord::Base
     followerHistories = []
     Account.transaction do
       accounts.where(screen_name: users.map(&:screen_name)).each do |account|
-
         friend_ids = account.get_friend_ids
         user = users.find &-> u { u.screen_name == account.screen_name }
         account.update(
@@ -95,6 +94,24 @@ class Account < ActiveRecord::Base
     Account.where(auto_retweet: true).each do |a|
       a.retweet_home_timeline
     end
+  end
+
+  # ステータスの更新
+  # 複数アカウントについて行う場合はupdate_all_statusesを用いる
+  #
+  # @return [nil]
+  def update_status!
+    friend_ids = self.get_friend_ids
+    user = self.get_user
+    self.update(
+      friends_count:   user.friends_count,
+      followers_count: user.followers_count
+      )
+    FollowerHistory.create(
+      account_id: self.id,
+      followers_count: user.followers_count,
+      friend_ids: friend_ids.to_a.join(',')
+      )
   end
 
   # ユーザーのフォロー
@@ -271,10 +288,10 @@ class Account < ActiveRecord::Base
     setting = Setting.first
     @client ||=
     Twitter::REST::Client.new(
-      consumer_key:       setting.twitter_consumer_key,
-      consumer_secret:    setting.twitter_consumer_secret,
-      access_token:        self.oauth_token,
-      access_token_secret: self.oauth_token_secret
+      consumer_key:    self.consumer_key,
+      consumer_secret: self.consumer_secret,
+      access_token:    self.access_token,
+      access_secret:   self.access_secret
       )
   end
 

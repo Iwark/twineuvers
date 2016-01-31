@@ -5,8 +5,8 @@
 #  id                  :integer          not null, primary key
 #  group_id            :integer          not null
 #  screen_name         :string(255)      not null
-#  oauth_token         :string(255)      not null
-#  oauth_token_secret  :string(255)      not null
+#  access_token        :string(255)      not null
+#  access_secret       :string(255)      not null
 #  friends_count       :integer          default(0)
 #  followers_count     :integer          default(0)
 #  description         :string(255)      default("")

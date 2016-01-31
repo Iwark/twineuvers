@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -7,7 +8,11 @@ Rails.application.routes.draw do
 
   get '/auth/twitter/callback' => "omniauth_callbacks#twitter"
 
-  resources :accounts, only: [:show, :edit, :update, :destroy]
+  resources :accounts do
+    member do
+      patch :update_status
+    end
+  end
   resources :targets
   resources :histories, only: [:index]
   resources :message_patterns, only: [:new, :edit, :create, :update] do
@@ -18,6 +23,10 @@ Rails.application.routes.draw do
 
   resources :groups, only: [:new, :edit, :create, :update] do
     patch :change_order
+    member do
+      get :new_accounts
+      post :create_accounts
+    end
   end
 
   resources :settings, only: [:edit, :update]

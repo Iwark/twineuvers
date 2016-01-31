@@ -1,0 +1,28 @@
+.container
+  .page-header
+    h1 アカウントリストの追加
+  .panel.panel-default
+    .panel-heading
+      .panel-title シートからアカウント名と４つのAPIキーを複数行、まとめて貼り付けます
+    .panel-body
+      = form_tag(create_accounts_group_path(@group)) do ||
+        .form-inputs
+          .form-group
+            = text_area_tag :list, "", class: 'form-control'
+          .form-group
+            = check_box_tag :auto_update, 1
+            label for="auto_update" style="margin-left: 5px;" auto_update
+          .form-group
+            = check_box_tag :auto_follow, 1
+            label for="auto_follow" style="margin-left: 5px;" auto_follow
+          .form-group
+            = check_box_tag :auto_unfollow, 1
+            label for="auto_unfollow" style="margin-left: 5px;" auto_unfollow
+          .form-group
+            = check_box_tag :auto_direct_message, 1
+            label for="auto_direct_message" style="margin-left: 5px;" auto_direct_message
+          .form-group
+            = check_box_tag :auto_retweet, 1
+            label for="auto_retweet" style="margin-left: 5px;" auto_retweet
+        .form-actions
+            = submit_tag '送信', class: 'btn btn-primary'

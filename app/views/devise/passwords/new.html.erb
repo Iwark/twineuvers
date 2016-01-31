@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="page-header">
+    <h1>パスワードを忘れましたか？</h1>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">メールでパスワードリセットの手順をお伝えします。</h3>
+    </div>
+    <div class="panel-body">
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Send me reset password instructions" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="panel-footer">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

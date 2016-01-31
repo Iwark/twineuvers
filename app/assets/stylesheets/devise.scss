@@ -1,0 +1,9 @@
+.panel-footer{
+  .devise-shared-links{
+    @include clear-both;
+    a{
+      float: left;
+      @extend .btn;
+    }
+  }
+}

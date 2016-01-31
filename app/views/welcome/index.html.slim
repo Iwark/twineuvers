@@ -18,6 +18,8 @@ ul.nav.nav-tabs.sortable
     = tab_pane(i, {id: "tab#{group.id}"}) do
       .pattern= "DMパターン: #{group.message_pattern_title}"
       = link_to 'グループの編集', edit_group_path(group)
+      = '/'
+      = link_to '一括アカウント追加', new_accounts_group_path(group)
       table.table
         thead
           tr
@@ -32,9 +34,7 @@ ul.nav.nav-tabs.sortable
             th DM
             th Retweet
             th
-            th
-            th
         tbody
           = render group.accounts
       .mt10
-        = link_to "アカウントの追加", "/auth/twitter?group_id=#{group.id}"
+        = link_to "アカウントの追加", new_account_path(group_id: group.id)

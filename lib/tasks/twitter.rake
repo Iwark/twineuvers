@@ -5,7 +5,9 @@ namespace :twitter do
   task update_profile: :environment do
     result = Benchmark.realtime do
       session = GoogleDrive.saved_session(File.expand_path('../../../config/google_token.json', __FILE__))
-      ws = session.spreadsheet_by_key("1Z0rt45NJoQdbUvamK5K_8Sc_oq66b_tdTzKF6WI2Md8").worksheets[0]
+      ws = session.spreadsheet_by_key("1Z0rt45NJoQdbUvamK5K_8Sc_oq66b_tdTzKF6WI2Md8").worksheets.find &-> s {
+        s.worksheet_feed_url == "https://spreadsheets.google.com/feeds/worksheets/1Z0rt45NJoQdbUvamK5K_8Sc_oq66b_tdTzKF6WI2Md8/private/full/od6"
+      }
 
       (1..ws.num_rows).each do |row|
         next if row <= 2

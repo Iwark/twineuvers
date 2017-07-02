@@ -1,4 +1,4 @@
-class CreateSentMessages < ActiveRecord::Migration
+class CreateSentMessages < ActiveRecord::Migration[4.2]
   def change
     create_table :sent_messages do |t|
       t.references :account, index: true

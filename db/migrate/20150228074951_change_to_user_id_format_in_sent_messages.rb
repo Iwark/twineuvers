@@ -1,4 +1,4 @@
-class ChangeToUserIdFormatInSentMessages < ActiveRecord::Migration
+class ChangeToUserIdFormatInSentMessages < ActiveRecord::Migration[4.2]
   def up
     change_column :sent_messages, :to_user_id, :integer, limit: 8
   end

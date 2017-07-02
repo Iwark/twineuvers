@@ -1,4 +1,4 @@
-class CreateFollowerHistories < ActiveRecord::Migration
+class CreateFollowerHistories < ActiveRecord::Migration[4.2]
   def change
     create_table :follower_histories do |t|
       t.references :account, index: true

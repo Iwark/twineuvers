@@ -1,4 +1,4 @@
-class AddUserIdToTarget < ActiveRecord::Migration
+class AddUserIdToTarget < ActiveRecord::Migration[4.2]
   def change
     add_reference :targets, :user, index: true, foreign_key: true
   end

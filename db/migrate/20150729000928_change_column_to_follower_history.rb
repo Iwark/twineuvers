@@ -1,4 +1,4 @@
-class ChangeColumnToFollowerHistory < ActiveRecord::Migration
+class ChangeColumnToFollowerHistory < ActiveRecord::Migration[4.2]
   def up
     change_column :follower_histories, :follower_ids, :text, default: nil
   end

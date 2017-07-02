@@ -1,8 +1,4 @@
-set :application, :twineuvers
 set :repo_url, 'git@github.com:Iwark/twineuvers.git'
-
-set :scm, :git
-
 set :rbenv_ruby, '2.4.1'
 
 # Default value for :linked_files is []
@@ -20,16 +16,14 @@ set :bundle_env_variables, { 'NOKOGIRI_USE_SYSTEM_LIBRARIES' => 1 }
 
 set :unicorn_rack_env, "production"
 set :unicorn_config_path, 'config/unicorn.rb'
+set :bundle_binstubs, nil
 
 namespace :deploy do
-
   desc 'Restart application'
   task :restart do
     invoke 'unicorn:restart'
   end
-
   after :publishing, :restart
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       within release_path do
@@ -39,5 +33,4 @@ namespace :deploy do
       end
     end
   end
-
 end

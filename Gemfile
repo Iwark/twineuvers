@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
-gem 'rails', '4.2.5'
+gem 'rails', '5.1.2'
 gem 'mysql2'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-sass-rails'
 
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'jbuilder'
+gem 'sdoc', group: :doc
 group :development, :test do
     gem 'byebug'
     gem 'web-console', '~> 2.0'
@@ -22,8 +22,6 @@ gem 'therubyracer', platforms: :ruby
 gem 'unicorn'
 # Slim
 gem 'slim-rails'
-# Assets log cleaner
-gem 'quiet_assets'
 # Form Builders
 gem 'simple_form'
 # HTML5 Validator
@@ -65,11 +63,11 @@ group :development do
   # Rack Profiler
   # gem 'rack-mini-profiler'
   # Deploy
-  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano-rails-console'
 end
 group :development, :test do
   gem 'annotate'

@@ -3,7 +3,7 @@ set :repo_url, 'git@github.com:Iwark/twineuvers.git'
 
 set :scm, :git
 
-set :rbenv_ruby, '2.2.3'
+set :rbenv_ruby, '2.4.1'
 
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml config/secrets.yml config/google_token.json}

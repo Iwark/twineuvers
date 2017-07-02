@@ -16,4 +16,5 @@ test:
   database: twineuvers_test
 
 production:
+  <<: *default
   database: twineuvers_production

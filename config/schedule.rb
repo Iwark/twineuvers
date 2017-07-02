@@ -33,9 +33,9 @@ every 15.minutes do
   rake "account:unfollow_all"
 end
 
-every 30.minutes do
-  rake "twitter:update_profile"
-end
+# every 30.minutes do
+#   rake "twitter:update_profile"
+# end
 
 every 47.minutes do
   rake "account:retweet_all"

@@ -262,7 +262,7 @@ class Account < ActiveRecord::Base
   end
 
   # テキストがNGワードを含まないかどうかチェックする
-  # 
+  #
   # @param [String] text チェックするテキスト
   # @return [Boolean] result 含まないかどうか(true: 含まない)
   def valid_tweet?(text)
@@ -288,10 +288,10 @@ class Account < ActiveRecord::Base
     setting = Setting.first
     @client ||=
     Twitter::REST::Client.new(
-      consumer_key:    self.consumer_key,
-      consumer_secret: self.consumer_secret,
-      access_token:    self.access_token,
-      access_secret:   self.access_secret
+      consumer_key:        self.consumer_key,
+      consumer_secret:     self.consumer_secret,
+      access_token:        self.access_token,
+      access_token_secret: self.access_secret
       )
   end
 

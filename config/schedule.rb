@@ -28,7 +28,7 @@ every 26.minutes do
   rake "account:send_direct_messages_all"
 end
 
-every 17.minutes do
+every 4.minutes do
   rake "account:follow_all"
   rake "account:unfollow_all"
 end

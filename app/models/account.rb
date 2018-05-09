@@ -121,7 +121,7 @@ class Account < ActiveRecord::Base
   def follow_users(n=1)
 
     # 一時的にキャッシュクリア
-    Rails.cache.clear
+    # Rails.cache.clear
 
     target_follower_ids = Rails.cache.fetch("target-follower-#{self.target.screen_name}", expires_in: 3.hours) do
       get_follower_ids(self.target.screen_name)

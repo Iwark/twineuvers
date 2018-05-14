@@ -6,15 +6,15 @@ class OmniauthCallbacksController < ApplicationController
     account     = Account.find_by(screen_name: screen_name)
     unless account
       account = Account.create(
-        group_id:           group_id.to_i,
-        screen_name:        screen_name,
-        access_token:        auth.credentials.token,
-        access_token_secret: auth.credentials.secret
+        group_id:      group_id.to_i,
+        screen_name:   screen_name,
+        access_token:  auth.credentials.token,
+        access_secret: auth.credentials.secret
       )
     else
       account.update(
-        access_token:        auth.credentials.token,
-        access_token_secret: auth.credentials.secret
+        access_token:  auth.credentials.token,
+        access_secret: auth.credentials.secret
       )
     end
     redirect_to :root

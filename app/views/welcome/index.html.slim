@@ -38,3 +38,5 @@ ul.nav.nav-tabs.sortable
           = render group.accounts
       .mt10
         = link_to "アカウントの追加", new_account_path(group_id: group.id)
+      .mt10
+        = link_to 'Twitterでログインしてアカウントを追加', "/auth/twitter?group_id=#{group.id}"

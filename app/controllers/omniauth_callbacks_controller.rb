@@ -8,13 +8,13 @@ class OmniauthCallbacksController < ApplicationController
       account = Account.create(
         group_id:           group_id.to_i,
         screen_name:        screen_name,
-        oauth_token:        auth.credentials.token,
-        oauth_token_secret: auth.credentials.secret
+        access_token:        auth.credentials.token,
+        access_token_secret: auth.credentials.secret
       )
     else
       account.update(
-        oauth_token:        auth.credentials.token,
-        oauth_token_secret: auth.credentials.secret
+        access_token:        auth.credentials.token,
+        access_token_secret: auth.credentials.secret
       )
     end
     redirect_to :root

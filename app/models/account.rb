@@ -37,7 +37,7 @@ class Account < ActiveRecord::Base
 
     accounts     = Account.where(auto_update: true)
     screen_names = accounts.pluck(:screen_name)
-    users        = Account.last.get_users(screen_names)
+    users        = Account.find(2).get_users(screen_names)
 
     followerHistories = []
     Account.transaction do
